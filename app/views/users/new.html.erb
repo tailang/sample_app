@@ -1,5 +1,26 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
+			<!-- 在上面的代码中渲染的局部图名为shared/error_messages,这里用到了rails的
+			一个约定：如果局部试图要在过个控制器中使用，则要把它存放在专门的shared目录下 -->
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+
+		<%= f.label :password_confirmation,"Confirmation" %>
+		<%= f.password_field :password_confirmation %>
+
+		<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
 
 
