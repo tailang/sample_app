@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_secure_password #只要数据库中有 password_digest 列,在模型文件中加入 has_secure_password 方法后就能验证用户身份了。
   					  #:passwprd与:password_confirmation相同并提交后，会保存在数据库的password_digest中
   before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token  #长期session
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z0-9\d\-.]+\.[a-z]+\z/i
@@ -22,6 +23,11 @@ class User < ActiveRecord::Base
   					uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-
+  
+  private
+  
+   def create_remember_token
+     self.remember_token = SecureRandom.urlsafe_base64
+   end
   
 end

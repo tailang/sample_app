@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 	#@user = User.new(name: "xxx",email: "xxx",
 	#	              password: "xxx",password confirmation: "xxx")
 	if @user.save
+		Sign_in @user
 		flash[:success] = "welcome to the sample app"
 		redirect_to @user
 
