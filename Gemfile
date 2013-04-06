@@ -2,8 +2,10 @@ source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.12'
 gem 'bootstrap-sass', '2.0.4'
-gem 'bcrypt-ruby', '3.0.1'
-
+gem 'bcrypt-ruby', '3.0.1'  #密码加密
+gem 'faker', '1.0.1' #定义rake任务
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do

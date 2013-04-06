@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
 		user = User.find_by_email(params[:session][:email])
 		if user && user.authenticate(params[:session][:password])
 			sign_in user
-			redirect_to user
+			#redirect_to user
+			redirect_back_or user #跳转到登入前的页面或者user面，定义在helper中
 		else
 			flash.now[:error] = 'Invalid email/password combination'
 			render 'new'

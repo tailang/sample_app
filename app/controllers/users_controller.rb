@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
-  
+
+ include SessionsHelper
+ before_filter :signed_in_user, only: [:index, :edit, :update] #控制权限只有登入才能修改
+ before_filter :correct_user, only: [:edit, :update] 
+ before_filter :admin_user, only: :destroy
+
+ def index
+ 	#@users = User.all
+ 	@users = User.paginate(page: params[:page])
+ end
+
  def show
   	@user = User.find(params[:id])
  end
@@ -15,7 +25,7 @@ class UsersController < ApplicationController
 	#@user = User.new(name: "xxx",email: "xxx",
 	#	              password: "xxx",password confirmation: "xxx")
 	if @user.save
-		Sign_in @user
+		sign_in @user
 		flash[:success] = "welcome to the sample app"
 		redirect_to @user
 
@@ -23,5 +33,45 @@ class UsersController < ApplicationController
 	  render 'new'
 	end
  end
+
+ def edit
+ 	#@user = User.find(params[:id]) correct_user方法已经使用该方法
+ end
+
+ def update
+ 	@user = User.find(params[:id])
+ 	if @user.update_attributes(params[:user])
+ 		flash[:success] = "profile updated"
+ 		sign_in @user
+ 		redirect_to @user
+ 	else
+ 		render 'edit'
+ 	end	
+ end
+
+ 	def destroy
+ 		User.find(params[:id]).destroy
+ 		flash[:success] = "User destroy"
+ 		redirect_to users_path
+ 	end
+
+ private
+
+ 	def signed_in_user
+ 		unless signed_in?
+ 		   store_location
+ 		   redirect_to signin_path, notice: "Please sign in."  
+ 	   		
+ 	end
+
+ 	def correct_user
+ 		@user = User.find(params[:id])
+ 		redirect_to(root_path) unless current_user?(@user) end
+ 	end
+
+ 	def admin_user
+ 		redirect_to(root_path) unless current_user.admin?	
+ 	end
+
 end
 
