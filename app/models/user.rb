@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   
-  def feed
+  def feed #被static_pages_controller中的home方法中调用，返回给实例变量@feed_items
     Micropost.from_users_followed_by(self) #为什么可以条用micropost类中的方法？？？
     # Micropost.where("user_id = ?", id) 
     # Micropost.where("user_id = ?", id) 中的问号可以确保 id 的值在传入底层的 SQL 查询语句之前做了适
