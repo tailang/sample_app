@@ -3,9 +3,9 @@
 	<aside class="span4">
 		<section>
 			<%= gravatar_for @user %>
-			<h1> <%= @user.name %></h1>
-			<span> <%= link_to "view my profile", @user %></span>
-			<span><b>Microposts:</b> <%= @user.microposts.count %></span>
+			 <% user_temp=@user.name %>
+			<span> <%= link_to user_temp, @user %></span>
+			<span><b>话语:</b> <%= @user.microposts.count %></span>
 		</section>
 		<section>
 			<%= render 'shared/stats' %>
@@ -19,7 +19,8 @@
 		</section>
 	</aside>
 	<div class="span8">
-		<h3> <%= @title %></h3>
+		 <!-- <h3> <%= @title %></h3> -->
+		 <h3><%= @title == "Following"? "关注列表" : "粉丝列表" %></h3>
 		  <% if @users.any? %>
 		  <ul class="users">
 		  	<%= render @users %>

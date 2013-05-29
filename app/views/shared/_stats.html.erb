@@ -5,12 +5,12 @@
 			<%= @user.followed_users.count %> 
 			<!-- 没用build？？？ -->
 		</strong>
-		following
+		关注<!-- following -->
 	</a>
 	<a href=" <%= followers_user_path(@user) %>">
 		<strong id="followers" class="stat">
 			<%= @user.followers.count %>
 		</strong>
-		follower
+		粉丝<!-- follower -->
 	</a>
 </div>

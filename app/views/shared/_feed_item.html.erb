@@ -6,10 +6,10 @@
   </span>
   <span class="content"><%= feed_item.content %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+    发布与 <%= time_ago_in_words(feed_item.created_at) %> 之前.
   </span>
   <% if current_user?(feed_item.user) %>
-	 <%= link_to "delete", feed_item, method: :delete,
+	 <%= link_to "删除", feed_item, method: :delete,
 	                                   data: { confirm: "You sure?"},
 	                                   title: feed_item.content %>
 	 <% end %>
