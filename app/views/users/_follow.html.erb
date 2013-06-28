@@ -1,6 +1,6 @@
 <%= form_for(current_user.relationships.build(followed_id: @user.id)) do |f| %>
 		<div> <%= f.hidden_field :followed_id %></div>
-		<%= f.submit "关注", class: "btn btn-large btn-primary" %>
+		<%= f.submit "关注", class: "btn btn-large btn-success" %>
 <% end %>
   <!-- 分析：虽然这个表单在users下，但是他将表单提交给relationshipcontroller下的create
 current_user.relationships.build(followed_id: @user.id)

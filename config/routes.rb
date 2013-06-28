@@ -15,7 +15,7 @@ end
   match '/contact', to: 'static_pages#contact'
   match '/signup',  to: 'users#new'
   match '/signin', to:'sessions#new'
-  match '/signout', to:'sessions#destroy', via: :delete
+  match '/signout', to:'sessions#destroy', via: :delete #说明destroy动作，通过delete请求
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

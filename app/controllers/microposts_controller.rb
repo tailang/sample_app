@@ -1,3 +1,4 @@
+# encoding: utf-8
 class MicropostsController < ApplicationController
 include SessionsHelper
 
@@ -10,7 +11,7 @@ include SessionsHelper
 	def create
 		@micropost = current_user.microposts.build(params[:micropost])
 		if @micropost.save
-			flash[:success] = "Micropost created"
+			flash[:success] = "发布成功"
 			redirect_to root_url
 		else
 			@feed_items = [] 

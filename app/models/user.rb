@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, 
   					format: { with: VALID_EMAIL_REGEX }, 
   					uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 } #presence: true
   validates :password_confirmation, presence: true
   
   def feed #被static_pages_controller中的home方法中调用，返回给实例变量@feed_items

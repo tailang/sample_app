@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SessionsController < ApplicationController
  protect_from_forgery
  include SessionsHelper  #helper的方法可以在views中自动使用，但是在controller中要include
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
 			#redirect_to user
 			redirect_back_or user #跳转到登入前的页面或者user面，定义在helper中
 		else
-			flash.now[:error] = 'Invalid email/password combination'
+			flash.now[:error] = "邮箱或密码错误"
 			render 'new'
 		end
 	end

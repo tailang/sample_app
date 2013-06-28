@@ -2,12 +2,16 @@
   <div id="error_explanation">
   	<div class="alert alert-error">
   		<!-- The form contains <%= pluralize(object.errors.count, "error") %> -->
-      <%= object.errors.count%>个错误
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p><strong>有<%= object.errors.count%>个错误导致操作失败:</strong> </p>
+      <ul>
+      <% object.errors.full_messages.each do |msg| %>
+      <li> <%= t(msg) %>
+
+      </li>
+      <% end %>
+    </ul>
   	</div>
-  	<ul>
-  		<% object.errors.full_messages.each do |msg| %>
-  		<li> <%= msg %></li>
-  		<% end %>
-  	</ul>
+  	
   </div>
 <% end %>

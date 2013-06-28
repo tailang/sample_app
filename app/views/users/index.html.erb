@@ -3,6 +3,7 @@
 
 <%= will_paginate %>
 <ul class="users">
-	<%= render @users %>
+	<%= render @users %> 
+	<!-- 调用views/users/_user.html.erb,因为model，传递的变量和局部模板名都为user,而且会迭代调用这个模板,用到了:collection属性 -->
 </ul>
 <%= will_paginate %>

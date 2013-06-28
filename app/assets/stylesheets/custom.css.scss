@@ -1,6 +1,7 @@
 @import "bootstrap";
 
 $grayMediumLight: #eaeaea;
+$themecolor: #690;
 
 /* mixins, variables,etc. */
 @mixin box_sizing {
@@ -16,6 +17,7 @@ html{
 
 body{
 	padding-top: 60px;
+	// background-color: #eaeaea;
 }
 
 section{
@@ -67,19 +69,26 @@ p{
 	line-height: 1.7em;
 }
 
+a{
+	color: $themecolor;
+}
+
+small{
+	font-size: 0.5em;
+}
 /* header */
 #logo {
 	float: left;
-	margin-right: 10px;
-	font-size: 1.7em;
-	color: white;
+	margin-right: 30px;
+	font-size: 2em;
+	color: $themecolor;
 	text-transform: uppercase;
 	letter-spacing: -1px;
 	padding-top: 9px;
 	font-weight: bold;
 	line-height: 1;
 	&:hover{
-		color: white;
+		color: $themecolor;
 		text-decoration: none;
 	}
 }
@@ -208,7 +217,7 @@ aside{
 		}
 		&:hover {
 			text-decoration: none;
-			color: $blue;
+			color: $themecolor;
 		}
 	}
 	strong{
@@ -275,7 +284,7 @@ input, textarea, select, .uneditable-input {
 	display: block;
 }
 .timestamp {
-	color: $grayLighter;
+	color: #a5a5a5;
 }
 .gravatar {
 	float: left;

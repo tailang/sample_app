@@ -1,5 +1,5 @@
-<% provide(:title, "Sign in") %>
-<h1>Sign in</h1>
+<% provide(:title, "登录") %>
+<h2>登录</h2>
 
 <div class="row">
 	<div class="span6 offset3">
@@ -7,11 +7,11 @@
 
 			<%= f.label "邮箱" %>
 			<%= f.text_field :email %>
-
+			<small>请输入你的注册邮箱</small><br><br>
 			<%= f.label "密码" %>
 			<%= f.password_field :password %>
-
-			<%= f.submit "登入", class: "btn btn-large btn-primary" %>
+			<small>请输入你的密码(不少于6个字符)</small><br><br>
+			<%= f.submit "登录", class: "btn btn-large btn-primary" %>
 
 		<% end -%>
 		<p>还没有帐号? <%= link_to "马上注册", signup_path %></p>
